@@ -31,12 +31,12 @@ public class Ball {
         }
     }
 
-    public void draw(Graphics2D buffer) {
-        buffer.setPaint(Color.red);
+    public void draw(Graphics2D buffer, Paint color) {
+        buffer.setPaint(color);
         buffer.fillOval(x, y, radius * 2, radius * 2);
     }
 
-    public boolean hasTouchound() {
+    public boolean hasTouchBound() {
         return hasTouchHorizontalBound() || hasTouchVerticalBound();
     }
 
