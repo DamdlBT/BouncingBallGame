@@ -11,6 +11,7 @@ public class GameWindow extends JFrame {
     private long before;
     private JPanel panel;
     private Ball ball;
+    private Ball ball2;
     private boolean playing = true;
     private int score = 0;
     private BufferedImage bufferedImage;
@@ -31,6 +32,7 @@ public class GameWindow extends JFrame {
         super.add(panel);
 
         ball = new Ball(25);
+        ball2 = new Ball(50);
     }
 
     public void start() {
@@ -63,14 +65,15 @@ public class GameWindow extends JFrame {
 
     private void update() {
         ball.update();
-        if (ball.hasTouchound()) {
+        ball2.update();
+        if (ball.hasTouchound() || ball2.hasTouchound()) {
             score += 10;
         }
     }
 
     private void drawOnBuffer() {
-        buffer.setPaint(Color.red);
-        buffer.fillOval(ball.getX(), ball.getY(), ball.getRadius()* 2, ball.getRadius() * 2);
+        ball.draw(buffer);
+        ball2.draw(buffer);
 
         buffer.setPaint(Color.white);
         buffer.drawString("Score: " + score, 10, 20);
