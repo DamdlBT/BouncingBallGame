@@ -5,11 +5,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
-public class GameWindow extends JFrame {
+public class GameWindow {
 
     private static final int SLEEP = 25;
     private long before;
     private JPanel panel;
+    private JFrame frame;
     private Ball ball;
     private Ball ball2;
     private boolean playing = true;
@@ -18,25 +19,26 @@ public class GameWindow extends JFrame {
     private Graphics2D buffer;
 
     public GameWindow() {
-        setSize(800,600);
-        setLocationRelativeTo(null);
-        setResizable(false);
-        setTitle("Bouncing Ball Game");
+        frame = new JFrame();
+        frame.setSize(800,600);
+        frame.setLocationRelativeTo(null);
+        frame.setResizable(false);
+        frame.setTitle("Bouncing Ball Game");
         //setUndecorated(true);  Enlever la bar en haut de la page
-        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         panel = new JPanel();
         panel.setBackground(Color.blue);
         panel.setFocusable(true);
         panel.setDoubleBuffered(true);
-        super.add(panel);
+        frame.add(panel);
 
         ball = new Ball(25);
         ball2 = new Ball(50);
     }
 
     public void start() {
-        super.setVisible(true);
+        frame.setVisible(true);
         before = System.currentTimeMillis();
         while (playing) {
             bufferedImage = new BufferedImage(800,600,BufferedImage.TYPE_INT_RGB);
@@ -74,7 +76,6 @@ public class GameWindow extends JFrame {
     private void drawOnBuffer() {
         ball.draw(buffer);
         ball2.draw(buffer);
-
         buffer.setPaint(Color.white);
         buffer.drawString("Score: " + score, 10, 20);
     }
