@@ -33,10 +33,9 @@ public class BouncingBallGame extends Game{
     }
 
     @Override
-    public void draw(Graphics2D buffer) {
-        ball.draw(buffer, Color.red);
-        ball2.draw(buffer, Color.green);
-        buffer.setPaint(Color.white);
-        buffer.drawString("Score: " + score, 10, 20);
+    public void draw(Buffer buffer) {
+        ball.draw(buffer, Color.RED);
+        ball2.draw(buffer, Color.GREEN);
+        buffer.drawText(10, 20, "Score: " + score, Color.white);
     }
 }
