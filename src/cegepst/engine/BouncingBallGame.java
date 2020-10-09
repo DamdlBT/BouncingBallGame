@@ -40,10 +40,10 @@ public class BouncingBallGame extends Game{
 
     @Override
     public void draw(Buffer buffer) {
-        ball.draw(buffer, Color.RED);
-        ball2.draw(buffer, Color.GREEN);
-        ball3.draw(buffer, Color.blue);
-        ball4.draw(buffer, Color.MAGENTA);
+        ball.draw(buffer);
+        ball2.draw(buffer);
+        ball3.draw(buffer);
+        ball4.draw(buffer);
         buffer.drawText(10, 20, "Score: " + score, Color.white);
         buffer.drawText(10,40, "FPS: " + GameTime.getCurrentFps(), Color.white);
         buffer.drawText(10,60,"Time: " + GameTime.getElapsedFormattedTime(), Color.white);

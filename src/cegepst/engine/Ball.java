@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Ball {
 
+    public Color color = Color.red;
     private int radius;
     private int x;
     private int y;
@@ -21,17 +22,22 @@ public class Ball {
     }
 
     public void update() {
+        Random random = new Random();
         x += velocityX;
         y += velocityY;
         if (hasTouchVerticalBound()) {
             velocityY *= -1;
+            float h = random.nextFloat();
+            color = Color.getHSBColor(h, 1,1);
         }
         if (hasTouchHorizontalBound()) {
             velocityX *= -1;
+            float h = random.nextFloat();
+            color = Color.getHSBColor(h, 1,1);
         }
     }
 
-    public void draw(Buffer buffer, Color color) {
+    public void draw(Buffer buffer) {
         buffer.drawCircle(x, y, radius, color);
     }
 
